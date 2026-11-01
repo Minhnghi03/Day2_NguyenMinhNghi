@@ -1,0 +1,20 @@
+@{
+    ViewData["Title"] = "Welcome";
+}
+
+<h2>Mục 2: Routing (@ViewBag.RoutingType)</h2>
+<p>Route Parameter (id): <strong>@ViewBag.Id</strong></p>
+<p>Query String (name): <strong>@ViewBag.Name</strong></p>
+<p>Query String (num): <strong>@ViewBag.Num</strong></p>
+
+<hr />
+
+<h2>Mục 1: Partial View & ViewComponent</h2>
+
+<!-- 1. Partial View -->
+<h4>1. Partial View:</h4>
+<partial name="_MessageAlertPartial" model="@ViewBag.Name" />
+
+<!-- 2. ViewComponent -->
+<h4>2. ViewComponent:</h4>
+@await Component.InvokeAsync("StudentInfo", new { name = ViewBag.Name, numTimes = ViewBag.Num })

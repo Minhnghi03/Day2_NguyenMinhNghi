@@ -1,0 +1,116 @@
+@{
+    ViewData["Title"] = "Bài tập Day 2 - Nguyễn Minh Nghi";
+}
+
+<div class="container py-4">
+    <div class="row mb-4">
+        <div class="col-12 text-center">
+            <h1 class="display-5 fw-bold text-primary">Bài Tập Buổi 2: ASP.NET Core MVC</h1>
+            <p class="fs-5 text-muted">Họ và tên: <strong>Nguyễn Minh Nghi</strong> | Lớp: <strong>KTPM</strong></p>
+            <div class="d-inline-flex gap-2">
+                <a href="/Hello/Welcome/3?name=KTPM&Num=5" class="btn btn-primary btn-lg px-4 shadow">
+                    🚀 Xem Demo Mục ① & ② (/Hello/Welcome/3?name=KTPM&Num=5)
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hàng 2 cột giới thiệu 2 mục -->
+    <div class="row g-4">
+        <!-- CỘT 1: MỤC ① -->
+        <div class="col-md-6">
+            <div class="card h-100 shadow-sm border-primary">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="my-0 fw-normal">① ViewComponent & Partial View</h4>
+                </div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title text-primary">Phân biệt & Ứng dụng</h5>
+                    <p class="card-text text-muted">
+                        Giải pháp chia nhỏ và tái sử dụng giao diện trong ứng dụng ASP.NET Core MVC.
+                    </p>
+
+                    <div class="table-responsive my-2">
+                        <table class="table table-bordered table-sm">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Tiêu chí</th>
+                                    <th>Partial View</th>
+                                    <th>ViewComponent</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>File</strong></td>
+                                    <td>Chỉ <code>.cshtml</code></td>
+                                    <td>Class C# + <code>Default.cshtml</code></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Logic C#</strong></td>
+                                    <td>Không có (dùng dữ liệu View cha)</td>
+                                    <td>Có logic C# độc lập</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Sử dụng</strong></td>
+                                    <td>UI tĩnh, thông báo</td>
+                                    <td>Widget, giỏ hàng, menu động</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="mt-auto pt-3">
+                        <h6>Demo Partial View ngay tại đây:</h6>
+                        <partial name="_MessageAlertPartial" model="@("Đây là Partial View được nhúng tại Index.cshtml!")" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CỘT 2: MỤC ② -->
+        <div class="col-md-6">
+            <div class="card h-100 shadow-sm border-info">
+                <div class="card-header bg-info text-white">
+                    <h4 class="my-0 fw-normal">② Conventional vs Attribute Routing</h4>
+                </div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title text-info">Định tuyến trong ASP.NET Core</h5>
+                    <p class="card-text text-muted">
+                        Cách hệ thống ánh xạ URL yêu cầu từ trình duyệt đến Controller và Action.
+                    </p>
+
+                    <ul class="list-group list-group-flush mb-3">
+                        <li class="list-group-item">
+                            <strong>1. Conventional Routing:</strong> Cấu hình mẫu chung trong <code>Program.cs</code>:
+                            <br />
+                            <code>pattern: "{controller=Home}/{action=Index}/{id?}"</code>
+                        </li>
+                        <li class="list-group-item">
+                            <strong>2. Attribute Routing:</strong> Đặt trực tiếp thuộc tính trên Controller / Action:
+                            <br />
+                            <code>[Route("Hello/Welcome/{id:int?}")]</code>
+                        </li>
+                    </ul>
+
+                    <div class="alert alert-warning mb-3">
+                        <strong>URL trên bảng:</strong> <code>Hello/Welcome/3?name=KTPM&Num=5</code>
+                        <div class="small mt-1">
+                            • Controller: <code>Hello</code><br />
+                            • Action: <code>Welcome</code><br />
+                            • Route Parameter: <code>id = 3</code><br />
+                            • Query String: <code>name = KTPM</code>, <code>Num = 5</code>
+                        </div>
+                    </div>
+
+                    <div class="mt-auto">
+                        <a href="/Hello/Welcome/3?name=KTPM&Num=5" class="btn btn-outline-info w-100 mb-2">
+                            Kiểm tra Attribute Routing
+                        </a>
+                        <a href="/Hello/WelcomeConventional/3?name=KTPM&Num=5" class="btn btn-outline-secondary w-100">
+                            Kiểm tra Conventional Routing
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
